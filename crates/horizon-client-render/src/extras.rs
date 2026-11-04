@@ -697,8 +697,8 @@ impl Item {
             Item::CosmeticsMine => "My cosmetics",
             Item::CosmeticsOthers => "Other players' cosmetics",
             Item::CosmeticsAuras => "Others' auras and trails",
-            Item::HorizonMarks => "Show the Horizon logo next to Horizon players",
-            Item::HorizonMe => "Show me as a Horizon player",
+            Item::HorizonMarks => "Horizon logos",
+            Item::HorizonMe => "Show me as Horizon",
         }
     }
     /// The switch this setting belongs to: it does nothing while that is off.
@@ -778,10 +778,10 @@ impl Item {
             }
             Item::CosmeticsAuras => "Auras and trails other players wear. Off by default.",
             Item::HorizonMarks => {
-                "A small Horizon logo before the names of other players who use Horizon, above their heads and in the player list. Only Horizon players see it: servers receive nothing."
+                "Show the Horizon logo next to Horizon players: a small logo before the names of other players who use Horizon, above their heads and in the player list. Only Horizon players see it: servers receive nothing."
             }
             Item::HorizonMe => {
-                "Other Horizon players see the logo by your name. Off, Horizon's cosmetics service never reports you as a Horizon player."
+                "Show me as a Horizon player: other Horizon players see the logo by your name. Off, Horizon's cosmetics service never reports you as a Horizon player."
             }
             Item::WheelCyclesSettings => {
                 "The scroll wheel over a button in the settings changes its value, as in vanilla. Off, the wheel only scrolls the list."

@@ -103,15 +103,15 @@ views, and your own with *Own name tag*) and in the player list, after the head.
 the wire to Minecraft servers: which players use Horizon comes from the cosmetics service, in the
 same cached `/v1/worn` answers as what they wear (no request of its own, nothing per frame).
 
-- **Who is reported**: a player whose game said "I play Horizon" lately. While *Show me as a
-  Horizon player* is on, the game signs in (Mojang's `join`, as for *My cosmetics*) and sends
+- **Who is reported**: a player whose game said "I play Horizon" lately. While *Show me as
+  Horizon* is on, the game signs in (Mojang's `join`, as for *My cosmetics*) and sends
   `POST /v1/presence {"listed": true}` at start, then every hour (`account::PRESENCE_EVERY`); the
   service reports them for 3 hours after the last time (`COSMETICS_PRESENCE_WINDOW`). Off, the game
   sends `{"listed": false}` and the service forgets them at once: it never reports them again until
   they turn it back on. An offline account sends nothing and is never reported.
-- **Settings** (Extras › Cosmetics, both on by default): *Show the Horizon logo next to Horizon
-  players* (off: the game draws no mark, and asks for nothing more than cosmetics need) and *Show me
-  as a Horizon player*.
+- **Settings** (Extras › Cosmetics, both on by default): *Horizon logos* ("Show the Horizon logo
+  next to Horizon players"; off: the game draws no mark, and asks for nothing more than cosmetics
+  need) and *Show me as Horizon* ("Show me as a Horizon player").
 - **The player list** keeps a 9-pixel column for the mark once anyone listed has it, so names stay
   aligned.
 - **Cost**: in a name tag, the mark is five filled rectangles beside the text, looked up under the
@@ -131,8 +131,9 @@ same cached `/v1/worn` answers as what they wear (no request of its own, nothing
     launcher does (`horizon_cosmetics::account`, Mojang's `join` with the player's session) and
     notes what the service confirmed in `cosmetics-visible.txt`; offline it tries again after 15 s,
     doubling to 10 minutes, until the service takes it. An unchanged switch sends nothing.
-  - *Other players' cosmetics: Shown → Name tags only → Hidden*. Hidden, the game asks for nothing
-    about them; name tags only, their name tag styles show and nothing on their bodies.
+  - *Other players' cosmetics: Shown → Name tags only → Hidden*. Hidden, nothing of theirs is drawn,
+    and the game asks for nothing about them unless *Horizon logos* is on (the same request says
+    who plays Horizon); name tags only, their name tag styles show and nothing on their bodies.
   - *Others' auras and trails*, off by default (no item of that kind exists yet).
 - **Name tag styles** (`game/names.rs`): the badge, 8 text pixels square, after the name and a
   one-pixel line in the style's colour under the name's background, in the name tag's own pass
@@ -193,7 +194,7 @@ that account). With no window set, the page stays hidden.
 - **A row per slot** (head, back, shirt, shoulder pet, name tag) with what it wears,
   "Nothing equipped" or "None owned yet"; **your player** in the middle, on your own skin, wearing
   it, with your name tag over the head as others see it (Horizon's mark unless the game's *Show me
-  as a Horizon player* is off, your style's badge after the name) (`horizon_cosmetics::preview`); **what you own for the
+  as Horizon* is off, your style's badge after the name) (`horizon_cosmetics::preview`); **what you own for the
   chosen slot**, "Nothing" first. Equipping shows at once.
 - **The founder set**: a line to claim it while its window is open, and once the window is closed,
   that it was free until that day and isn't offered any more.
